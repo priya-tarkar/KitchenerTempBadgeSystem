@@ -1,0 +1,28 @@
+﻿@model Data.Access.Layer.Models.Gaurd
+
+@{
+    ViewData["Title"] = "SignOutPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>SignOutPage</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignOutPage" asp-controller="Home" method="post">
+            
+            <div class="form-group">
+                @Html.DisplayNameFor(model => model.TempBadge)
+                <input name="TempBadge" class="form-control" type="text" required />
+               
+            </div>
+            <div class="form-group">
+                <button type="submit"  class="btn btn-link text-primary one" onclick="return confirm('Are you sure, you want to SignOut badge?')">Sign Out  </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

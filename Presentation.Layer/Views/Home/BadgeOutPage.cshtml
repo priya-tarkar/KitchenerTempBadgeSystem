@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<Data.Access.Layer.Models.MultiModelPage>
+
+@{
+    ViewData["Title"] = "BadgeOutPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>BadgeOutPage</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Badge</th>
+            <th>Assign Time</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td><img src="@Url.Content(@item.PhotoUrl)" target="_blank" class="one profileImage" /></td>
+                <td>@item.Name</td>
+                <td>@item.TempBadge</td>
+                <td>@item.AssignTime</td>
+        </tr>
+}
+    </tbody>
+</table>

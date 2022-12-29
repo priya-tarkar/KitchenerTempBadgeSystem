@@ -1,0 +1,44 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    margin-top: 0px;
+}
+
+/*================================= Home Page =============================*/
+.homeNav{
+    margin-top: 0;
+}
+.Sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+    text-align: center
+}
+.SignIn, .SignOut {
+    background-color:deepskyblue;
+    width: 400px;
+    border-radius:20px;
+    border-block-end-color:antiquewhite;
+    height: 100px;
+    margin-right: 6vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+

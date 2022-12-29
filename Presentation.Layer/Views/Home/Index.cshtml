@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid home" >
+    <div>
+        <nav class="navbar navbar-expand-lg bg-primary navbar-dark homeNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="BadgeQueuePage">Badge Queue</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="BadgeOutPage">Badge Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="BadgeReportPage">Badge Report</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="Sign">
+        <div class="SignIn">
+            <a asp-action="SignIn" class="btn btn-primary btn-lg" style="background:#073642;width:150px">Sign In</a>
+        </div>
+        <div class="SignOut">
+            <a asp-action="SignOutPage" class="btn btn-primary btn-lg" style="background:#073642">Sign Out</a>
+        </div>
+
+    @*<img src="./images/login_and_logout-removebg-preview.png" usemap="#example">
+
+    <!-- using map tag to create clickable areas -->
+    <map name="example">
+        <!-- defining clickable areas -->
+        <!-- clickable area of Polygon -->
+        <area href="www.google.com" coords="60,0,105,70,51,107,62,81,0,75,42,7" shape="poly">
+
+        <!-- clickable area of Rectangle -->
+        <area href="https://www.google.c" coords="30,41,269,76" shape="rect">
+
+        <!-- clickable area of Circle -->
+        <area href="" asp-action="SignOutPage" coords="21,148,273,204" shape="rect">
+    </map>*@
+    </div>
+</div>
