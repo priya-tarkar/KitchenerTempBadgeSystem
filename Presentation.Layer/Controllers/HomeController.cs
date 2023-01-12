@@ -47,6 +47,9 @@ namespace Presentation.Layer.Controllers
         [HttpGet]
         public IActionResult Badge(string fn, string ln, int ecode)
         {
+           
+
+
 
             return View(_guardService.SignInBadge(fn, ln, ecode));
         }
@@ -124,3 +127,6 @@ public IActionResult BadgeQueuePage()
 
     }
 }
+
+
+/*changes added*/

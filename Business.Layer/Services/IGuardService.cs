@@ -11,6 +11,11 @@ namespace Business.Layer.Services
     {
         public IEnumerable<Gaurd> SignInBadge(string fname, string lname, int ecode);
         public IEnumerable<Gaurd> SignOutBadge(int Id);
+
+
+        //changes added
+        /* public int SignOutBadge(int Id);*/
+
         public IEnumerable<Gaurd> GetBadges();
 
         //============ changes ===========

@@ -3,6 +3,7 @@ using Data.Access.Layer.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,10 @@ namespace Business.Layer.Services
 
         public IEnumerable<Gaurd> SignInBadge(string fname, string lname, int ecode)
         {
+            if (fname == null || ecode == null)
+            {
+                return null;
+            }
             return _repo.SignInBadge(fname, lname, ecode);
         }
 
@@ -35,6 +40,27 @@ namespace Business.Layer.Services
         {
             return (_repo.SignOutBadge(Id));
         }
+
+       
+
+
+
+
+        //changes added
+        /* public int SignOutBadge(int Id)
+         {
+             if(Id==0)
+             {
+                 return (int)HttpStatusCode.BadRequest;
+             }
+             else
+             {
+                 return (int)HttpStatusCode.Accepted;
+             }
+
+         }*/
+
+
 
 
 
@@ -55,6 +81,12 @@ namespace Business.Layer.Services
 
         public IEnumerable<Gaurd> SignOutPage(string TempBadge)
         {
+            if(TempBadge == null)
+            {
+                return null;
+            }
+            
+
             return _repo.SignOutPage(TempBadge);
         }
         //==========================

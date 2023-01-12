@@ -108,8 +108,36 @@ namespace Data.Access.Layer.Repository
         }
 
 
+        /* public IEnumerable<Gaurd> GetReports(DateTime StartDate, DateTime EndDate, string FirstName, string LastName, string Status)
+         {
+             IQueryable<Gaurd> query = _dbContext.Gaurds.Where(x => x.FirstName != null);
+             if (!string.IsNullOrEmpty(FirstName))
+             {
+                 query = query.Where(x => x.FirstName.StartsWith(FirstName));
+             }
+             if (!string.IsNullOrEmpty(LastName))
+             {
+                 query = query.Where(x => x.LastName.StartsWith(LastName));
+             }
+             query = query.Where(x => x.SignIn >= StartDate && x.SignIn <= EndDate);
+
+
+             return query.ToList();
+
+         }*/
+
         public IEnumerable<Gaurd> GetReports(DateTime StartDate, DateTime EndDate, string FirstName, string LastName, string Status)
         {
+            if (string.IsNullOrEmpty(FirstName) && string.IsNullOrEmpty(LastName) && StartDate == DateTime.MinValue
+                && EndDate == DateTime.MinValue && Status != "on")
+            {
+                return _dbContext.Gaurds.ToList();
+            }
+            if (string.IsNullOrEmpty(FirstName) && string.IsNullOrEmpty(LastName) && StartDate == DateTime.MinValue
+                && EndDate == DateTime.MinValue && Status == "on")
+            {
+                return _dbContext.Gaurds.Where(x => x.SignOut > DateTime.MinValue).ToList();
+            }
             IQueryable<Gaurd> query = _dbContext.Gaurds.Where(x => x.FirstName != null);
             if (!string.IsNullOrEmpty(FirstName))
             {
@@ -119,11 +147,23 @@ namespace Data.Access.Layer.Repository
             {
                 query = query.Where(x => x.LastName.StartsWith(LastName));
             }
-            query = query.Where(x => x.SignIn >= StartDate && x.SignIn <= EndDate);
+            if (!(StartDate == DateTime.MinValue))
+            {
+                query = query.Where(x => x.SignIn >= StartDate);
+            }
+            if (!(EndDate == DateTime.MinValue))
+            {
+                query = query.Where(x => x.SignIn <= EndDate);
+            }
+            if (Status == "on")
+            {
+                //return _dbContext.Gaurds.Where(x => x.SignOut > DateTime.MinValue).ToList();
+                query = query.Where(x => x.SignOut > DateTime.MinValue);
+            }
+
 
 
             return query.ToList();
-
         }
 
 
@@ -132,14 +172,37 @@ namespace Data.Access.Layer.Repository
             return _dbContext.Gaurds.ToList();
         }
 
-        public IEnumerable<Gaurd> SignOutPage(string TempBadge)
+       /* public IEnumerable<Gaurd> SignOutPage(string TempBadge)
         {
             var f = _dbContext.Gaurds.FirstOrDefault(x => x.TempBadge == TempBadge);
             f.SignOut = DateTime.Now;
 
             _dbContext.SaveChanges();
             return _dbContext.Gaurds;
+        }*/
+
+
+
+        public IEnumerable<Gaurd> SignOutPage(string TempBadge)
+        {
+            var f = _dbContext.Gaurds.FirstOrDefault(x => x.TempBadge == TempBadge);
+            if (f != null)
+            {
+                if (f.SignOut.ToString() == "1/1/0001 12:00:00 AM")
+                {
+                    f.SignOut = DateTime.Now;
+                    _dbContext.SaveChanges();
+                    return _dbContext.Gaurds;
+                }
+                else
+                {
+                    return _dbContext.Gaurds;
+                }
+
+            }
+            return null;
         }
+
 
         public IEnumerable<Report> GetBadgeQueue()
         {
