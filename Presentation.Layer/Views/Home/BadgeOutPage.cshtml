@@ -23,7 +23,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-                <td><img src="@Url.Content(@item.PhotoUrl)" target="_blank" class="one profileImage" /></td>
+                <td><img src="@Url.Content(@item.PhotoUrl)" target="_blank" class="one profileImage" style="width:150px;height:150px" /></td>
                 <td>@item.Name</td>
                 <td>@item.TempBadge</td>
                 <td>@item.AssignTime</td>

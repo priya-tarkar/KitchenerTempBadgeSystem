@@ -7,9 +7,7 @@
 
 <h1>Badge</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -66,7 +64,7 @@
                    @* DateTime b=1/1/0001 12:00:00 AM;
                     @if (item.SignOut != )*@
                     @*changes*@
-                    <a href="/Home/BadgeOut?id=@item.Id" class="btn btn-link text-primary one" onclick="return confirm('Are you sure, you want to SignOut badge?')"> Sign Out </a>
+                    @*<a href="/Home/BadgeOut?id=@item.Id" class="btn btn-link text-primary one" onclick="return confirm('Are you sure, you want to SignOut badge?')"> Sign Out </a>*@
             
             </td>
         </tr>
